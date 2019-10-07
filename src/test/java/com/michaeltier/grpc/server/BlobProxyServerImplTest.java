@@ -19,7 +19,7 @@ public class BlobProxyServerImplTest {
   @Test
   public void readBlobTest() {}
 
-  @Test
+  @Test(expected = IllegalArgumentException.class)
   public void constructionTest() {
 
     BlobProxyServerImpl server = new BlobProxyServerImpl(null, "BLOB_CONTAINER");

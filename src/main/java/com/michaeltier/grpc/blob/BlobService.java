@@ -20,19 +20,23 @@ public class BlobService {
 
     private static final Logger logger = LoggerFactory.getLogger(BlobService.class);
 
-    public static CloudBlob getBlobItem(String key, String blobAccount, String blobContainer) throws URISyntaxException, InvalidKeyException, StorageException {
+    public static CloudBlockBlob getBlobItem(String key, String blobAccount, String blobContainer) throws URISyntaxException, InvalidKeyException, StorageException {
 
         // Create the blob client.
-        String uriString = String.format("http://%s.blob.core.windows.net", blobAccount);
-        logger.debug("Creating Blob client for  base URI " + uriString);
+        String uriString = String.format("https://%s.blob.core.windows.net", blobAccount);
+        logger.debug("Creating Azure Blob  client for  base URI " + uriString);
 
         URI baseuri = new URI(uriString);
-        //CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
         CloudBlobClient blobClient = new CloudBlobClient(baseuri);
+        logger.debug("Successfully create Azure Blob  client");
         // Retrieve reference to a previously created container.
         CloudBlobContainer container = blobClient.getContainerReference(blobContainer);
+        logger.debug("Successfully got a handle to Container {}", container.getName());
+
+        logger.debug("Attempting to retrieve the blob for key {}", key);
         CloudBlockBlob blob = container.getBlockBlobReference(key);
 
+        logger.debug("Retrieved  the blob {} with URI {}", blob.getName(), blob.getUri());
         return blob;
     }
 
