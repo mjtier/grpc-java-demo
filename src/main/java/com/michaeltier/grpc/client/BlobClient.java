@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 public class BlobClient {
 
     public static void main(String[] args) throws SSLException, IOException {
-        System.out.println("Hello I'm a gRPC client for Blog");
+        System.out.println("Hello I'm a gRPC client for Blob server");
 
         BlobClient main = new BlobClient();
         main.run();
@@ -38,10 +38,10 @@ public class BlobClient {
         // created a greet service client (blocking - synchronous)
         BlobProxyGrpc.BlobProxyBlockingStub blobClient = BlobProxyGrpc.newBlockingStub(channel);
 
+        // The file we want to download
         String key = "lorum.txt";
-        // Unary
-        // created a protocol buffer ReadBlobRequest message
-        // to download the lorum.txt file
+
+        // create a protocol buffer ReadBlobRequest message to download thefile
         ReadBlobRequest blobReadRequest =  ReadBlobRequest.newBuilder()
             .setKey(key)
             .build();
