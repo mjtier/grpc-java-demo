@@ -6,7 +6,7 @@ import com.barracuda.proto.ReadBlobResponse;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.protobuf.ByteString;
-import com.michaeltier.grpc.Blob.BlobService;
+import com.michaeltier.grpc.blob.BlobService;
 import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.CloudBlob;
 import io.grpc.stub.StreamObserver;
