@@ -30,4 +30,22 @@ storage proxy service.
 
 ## Building Exectuable
 The assembled .jar is stored in {Project Root}/build/libs directory.
+You can build the jar and run all the associated unit test by issuing the
+`./gradelw assemble` command in the command line interface.
 
+## Running the Server
+### Preconditions
+The user must have already configured the enviroment variables. BLOB_ACCOUNT and
+BLOB_CONTAINER.
+### Gradle Task
+The Gradle build configuration provies a Gradle Task to start the server. The
+server can be started from the command line by issuing the command ` ./gradlew executeServer`
+
+## Running the Client
+A client that exercises a functional test of the server code has been provided.
+The client requests the keys lorum.txt, dog.jpg, and cat.jpg.
+### Preconditions
+A publicly available container with the files lorum.txt, dog.jpg, and cat.jpg.
+### Gradle Task
+The Gradle build configuration provies a Gradle Task to start the client.  The
+client can be started from the command line by issuing the command ` ./gradlew executeClient`
