@@ -53,6 +53,16 @@ protobuf {
     }
 }
 
+task executeServer(type:JavaExec) {
+    main = "com.michaeltier.grpc.server.BlobProxyServer"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+task executeClient(type:JavaExec) {
+    main = "com.michaeltier.grpc.client.BlobClient"
+    classpath = sourceSets.main.runtimeClasspath
+}
 // if you have source imports issues, add the below
 // sourceSets.main.java.srcDir new File(buildDir, 'generated/source')
 // idea {
