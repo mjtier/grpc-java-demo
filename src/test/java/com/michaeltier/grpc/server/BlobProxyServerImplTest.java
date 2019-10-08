@@ -3,10 +3,6 @@ package com.michaeltier.grpc.server;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import com.michaeltier.grpc.server.BlobProxyServerImpl;
-
-
-import static org.junit.Assert.*;
 
 public class BlobProxyServerImplTest {
 
@@ -20,10 +16,12 @@ public class BlobProxyServerImplTest {
   public void readBlobTest() {}
 
   @Test(expected = IllegalArgumentException.class)
-  public void constructionTest() {
-
+  public void nullBlobAccountcConstructionTest() {
     BlobProxyServerImpl server = new BlobProxyServerImpl(null, "BLOB_CONTAINER");
+  }
 
-
+  @Test(expected = IllegalArgumentException.class)
+  public void emptyStringBlobContainerConstructionTest() {
+    BlobProxyServerImpl server = new BlobProxyServerImpl("BLOB_ACCOUNT", "");
   }
 }

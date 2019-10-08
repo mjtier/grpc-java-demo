@@ -19,7 +19,9 @@ public class BlobProxyServer {
         String blobAccount = System.getenv("BLOB_ACCOUNT");
         String blobContainer = System.getenv("BLOB_CONTAINER");
 
-        logger.info(String.format("Starting BlobProxyServer on port %d", SERVER_PORT));
+        logger.debug("Blob Account Env Variable: {}", blobAccount);
+        logger.debug("Blob Container Env Varialbe {}", blobContainer);
+        logger.info("Starting BlobProxyServer on port {}", SERVER_PORT);
 
         Server server = ServerBuilder.forPort(SERVER_PORT)
                                      .addService(new BlobProxyServerImpl(blobAccount, blobContainer))

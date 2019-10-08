@@ -28,3 +28,6 @@ called generateProto. In IntelliJ, this service is under Tasks -> other. Execute
 that task to autogenerate all the client/server boilerplate code for the blob 
 storage proxy service.
 
+## Building Exectuable
+The assembled .jar is stored in {Project Root}/build/libs directory.
+
