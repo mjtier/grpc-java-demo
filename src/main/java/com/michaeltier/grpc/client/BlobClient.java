@@ -34,20 +34,21 @@ public class BlobClient {
             .build();
 
         logger.debug("Successfully constructed the Managed Chanel");
-        doUnaryCall(channel);
+        doUnaryCall(channel, "lorum.txt");
+        doUnaryCall(channel, "cat.jpg");
+        doUnaryCall(channel, "dog.jpg");
 
         logger.info("Shutting down channel");
         channel.shutdown();
 
     }
 
-    private void doUnaryCall(ManagedChannel channel) throws IOException {
+    private void doUnaryCall(ManagedChannel channel, String key) throws IOException {
         // created a service client (blocking - synchronous)
         BlobProxyGrpc.BlobProxyBlockingStub blobClient = BlobProxyGrpc.newBlockingStub(channel);
 
         logger.debug("Successfully created a service client.");
         // The file we want to download
-        String key = "lorum.txt";
 
         // create a protocol buffer ReadBlobRequest message to download thefile
         ReadBlobRequest blobReadRequest =  ReadBlobRequest.newBuilder()
